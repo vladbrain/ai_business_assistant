@@ -1,117 +1,72 @@
-```md
-# AI Business Assistant
+````md
+# 🤖 AI Business Assistant
 
-A role-based AI assistant for small businesses that demonstrates how Large Language Models (LLMs) can be embedded into real operational workflows with clear constraints and business logic.
+AI Business Assistant is a role-based AI system designed to support **real business operations** such as sales, customer support, and management decision-making.
 
-This project is designed as a portfolio-ready MVP for AI Automation / AI Developer / AI Engineer roles.
-
----
-
-## Business Problem
-
-Small retail businesses often face:
-- seasonal sales slowdowns
-- inconsistent outbound sales calls
-- limited time for managers to coach sales representatives
-- generic scripts that do not reflect real store operations
-
-Managers need a way to quickly generate consistent, high-quality sales and operational guidance without relying on rigid templates or ad-hoc advice.
+The goal of this project is not to build another generic chatbot, but to demonstrate how **LLMs can be used as constrained, cost-aware business tools** integrated into realistic workflows.
 
 ---
 
-## Solution
+## ✨ Key features
 
-This project provides a lightweight AI assistant that:
-- operates within a defined business context
-- adapts behavior based on role (sales, support, manager)
-- focuses on practical, realistic outputs rather than generic advice
-- can be used for internal coaching, planning, and process improvement
-
-The assistant is intentionally constrained to avoid hallucinated promotions, prices, or policies.
-
----
-
-## Target Users
-
-- Small retail business managers
-- Sales team leaders
-- Customer support supervisors
-- Startups building internal AI tools
-- AI automation and AI engineering teams (portfolio use)
+* **Role-based behavior**: `sales`, `support`, `manager`
+* Business-context–aware responses (policies, goals, constraints)
+* Manager-focused outputs:
+  * action plans
+  * outbound call frameworks
+  * coaching notes
+* Designed to avoid hallucinated prices, promotions, or policies
+* Cost-controlled LLM usage suitable for development
+* Core **CLI application**
+* Optional **Streamlit** web interface for demos and presentation
 
 ---
 
-## Key Features
+## 📂 Project structure
 
-- Role-based behavior: `sales`, `support`, `manager`
-- Business-context–aware responses
-- Manager-focused outputs such as action plans and coaching notes
-- Outbound call frameworks and scripts focused on quality
-- Cost-controlled LLM usage suitable for development and testing
-- CLI-based core logic
-- Optional Streamlit web interface for demo and presentation
-
----
-
-## Tech Stack
-
-- Python
-- OpenAI API
-- LangChain
-- Streamlit (optional UI)
-- JSON-based local storage
-- Environment-based configuration (`.env`)
-
----
-
-## Project Structure
-
-```
-
+```text
 ai_business_assistant/
 ├── app.py                  # CLI application (core logic)
-├── ui_streamlit.py         # Optional Streamlit web interface
-├── config.py
+├── ui_streamlit.py         # Streamlit UI
+├── config.py               # Environment and model configuration
 ├── requirements.txt
 ├── README.md
+│
 ├── prompts/
-│   └── system_prompt.txt
+│   └── system_prompt.txt   # Constrained system prompt
+│
 ├── memory/
-│   └── history.json
+│   └── history.json        # Local conversation memory (gitignored)
+│
 └── .gitignore
-
 ````
 
 ---
 
-## Example Use Case (Retail Manager)
+## 🚀 Run the app locally
 
-**Scenario:**  
-January sales slowdown in a Verizon retail store with a need to improve outbound call quality.
+### 1) Create and activate a virtual environment
 
-The assistant can:
-- generate a clear action plan for outbound calling
-- create realistic call scripts focused on value and discovery
-- provide coaching notes for managers to evaluate call quality
-- avoid referencing unconfirmed promotions or pricing
+**Windows**
 
----
-
-## Setup (Windows / VS Code)
-
-### 1. Create and activate virtual environment
-```powershell
+```bat
 python -m venv .venv
 .\.venv\Scripts\Activate.ps1
-````
+```
 
-### 2. Install dependencies
+---
 
-```powershell
+### 2) Install dependencies
+
+```bash
 pip install -r requirements.txt
 ```
 
-### 3. Create `.env` file
+---
+
+### 3) Environment configuration
+
+Create a `.env` file in the project root:
 
 ```env
 OPENAI_API_KEY=YOUR_API_KEY
@@ -121,68 +76,97 @@ MAX_OUTPUT_TOKENS=250
 TEMPERATURE=0.2
 ```
 
-> `.env` is excluded from version control.
-
 ---
 
-## Run (CLI)
+### 4) Run CLI version
 
-```powershell
+```bash
 python app.py
 ```
 
 ---
 
-## Run (Streamlit UI)
+### 5) Run Streamlit UI
 
-```powershell
+```bash
 streamlit run ui_streamlit.py
 ```
 
 ---
 
-## Cost Control Strategy
+## 🔄 End-to-end flow
 
-This project is designed to minimize API usage during development:
-
-* short conversation history
-* capped response length
-* low temperature for concise output
-* focused system prompts
-
-These patterns reflect real-world production constraints.
-
----
-
-## Design Principles
-
-* LLMs are treated as constrained tools, not general chatbots
-* Business context is the single source of truth
-* Quality and consistency are prioritized over verbosity
-* The system is built to be extended, not over-engineered
+```text
+Business Context
+      ↓
+Role Selection (manager / sales / support)
+      ↓
+Constrained LLM Execution
+      ↓
+Actionable Business Output
+```
 
 ---
 
-## Future Improvements
+## 🧠 Example use case (Retail Manager)
 
-* CLI commands for role and context switching
+**Scenario:**
+January sales slowdown in a retail store with reduced foot traffic.
+
+**Manager request:**
+
+```
+Create an action plan to improve outbound call quality during a slow sales period.
+```
+
+**Assistant output:**
+
+* structured action plan
+* outbound call framework focused on value and discovery
+* coaching notes for evaluating call quality
+
+---
+
+## 🧩 What this project demonstrates
+
+* How to treat LLMs as **business tools**, not chatbots
+* How to constrain model behavior using context and roles
+* How to design AI systems with cost awareness
+* How to generate realistic, operational outputs
+* How to separate:
+
+  * business logic
+  * prompt design
+  * interface layer (CLI / UI)
+* How to build an AI automation project suitable for production thinking
+
+---
+
+## 🚧 Future improvements
+
+* CLI commands (`/role`, `/context`, `/clear`)
 * Document-based context using RAG
-* CRM or call system integrations
-* Multi-store configuration
+* Multiple business profiles
+* CRM / call-system integrations
 * Authentication and access control
+* Deployment-ready service layer
 
 ---
 
-## Disclaimer
+## ⚠️ Notes
 
-This project is intended for educational and portfolio purposes only.
-No real customer data should be used.
+* This is not a generic chatbot
+* The assistant intentionally refuses to invent missing business data
+* Output quality depends on the provided business context
+* Designed for internal tooling and decision support
 
 ---
 
-Vladimir Amzaiants
-GitHub: @vladbrain
-On a mission to become a ML / AI engineer pro 💪
+## 👤 Author
+
+**Vladimir Amzaiants**
+GitHub: **@vladbrain**
+On a mission to become a **ML / AI engineer pro** 💪
 
 ```
 ```
