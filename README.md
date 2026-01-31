@@ -162,10 +162,10 @@ Create an action plan to improve outbound call quality during a slow sales perio
 
 ---
 
-## 👤 Author
+## 👤 Author  
 
-**Vladimir Amzaiants**
-GitHub: **@vladbrain**
+**Vladimir Amzaiants**  
+GitHub: **@vladbrain**  
 On a mission to become a **ML / AI engineer pro** 💪
 
 ```
